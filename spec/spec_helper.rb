@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
-require 'rubocop/erb'
+require 'rubocop-erb'
+require 'rubocop-rails'
+require 'rubocop/rspec/support'
+require 'rubocop/rspec/erb/support'
+require 'debug'
+
+# Optional-dependency cop patches are normally applied from the plugin's `rules`
+# hook during a real run; apply them here so the specs exercise them too.
+RuboCop::Erb::Plugin.patch_optional_cops
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

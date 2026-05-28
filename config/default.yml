@@ -7,218 +7,159 @@ AllCops:
   Include:
     - '**/*.erb'
 
-Layout/ArgumentAlignment:
-  Exclude:
-    - '**/*.erb'
+ERB/BlockAlignment:
+  Description: 'Ensures the end of a multi-tag block is aligned with the beginning of the block.'
+  Enabled: true
+  Safe: true
+  Include:
+    - '**/*.html.erb'
+    - '**/html/*.erb'
 
-Layout/ArrayAlignment:
-  Exclude:
-    - '**/*.erb'
+ERB/EmptyTag:
+  Description: 'Removes ERB tags whose content is only whitespace.'
+  Enabled: true
+  Safe: true
 
-Layout/BlockAlignment:
-  Exclude:
-    - '**/*.erb'
+ERB/FirstLineLineBreak:
+  Description: 'Checks for a line break before the first line of code in a multi-line ERB tag.'
+  Enabled: false
+  Safe: true
 
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - '**/*.erb'
+ERB/InconsistentControlFlowScope:
+  Description: 'Ensures that all control flow blocks within an ERB tag are in the same scope.'
+  Enabled: true
 
-Layout/CommentIndentation:
-  Exclude:
-    - '**/*.erb'
+ERB/Indentation:
+  Description: 'Ensures the first line of a multi-line ERB tag is indented appropriately.'
+  Enabled: true
+  AllowZeroIndentForInitialBlockComment: true
+  Safe: true
 
+ERB/LeadingEmptyLines:
+  Description: 'Checks for unnecessary blank lines at the beginning of an ERB template.'
+  Enabled: true
+  Safe: true
+  Include:
+    - '**/*.html.erb'
+    - '**/html/*.erb'
+
+ERB/LeadingWhitespace:
+  Description: 'Ensures there is no leading whitespace in ERB tags.'
+  Enabled: true
+  Safe: true
+  Include:
+    - '**/*.html.erb'
+    - '**/html/*.erb'
+
+ERB/MissingClosingTag:
+  Description: 'Ensures required HTML closing tags are present.'
+  Enabled: true
+  Severity: warning
+
+ERB/MissingOpeningTag:
+  Description: 'Warns about HTML closing tags without a corresponding opening tag.'
+  Enabled: true
+  Severity: warning
+
+ERB/MultipleBlocksInTag:
+  Description: 'Prefers a single Ruby control flow block per ERB tag.'
+  Enabled: true
+
+ERB/MultilineTagLayout:
+  Description: 'Checks the layout of the closing tag of a multi-line ERB tag.'
+  Enabled: true
+  EnforcedStyle: symmetrical
+  SupportedStyles:
+    # symmetrical: closing tag is positioned in same way as opening tag
+    # new_line: closing tag is always on a new line
+    # same_line: closing tag is always on the same line as last element
+    - symmetrical
+    - new_line
+    - same_line
+  Safe: true
+
+ERB/OmittedClosingTag:
+  Description: 'Ensures HTML tags that have optional closing tags have them.'
+  Enabled: true
+
+ERB/OutputSafety:
+  Description: 'Disallows the `<%==` raw output tag when Rails/OutputSafety is enabled.'
+  Enabled: true
+  Severity: warning
+  Include:
+    - '**/*.html.erb'
+
+ERB/RedundantStringCoercion:
+  Description: 'Checks for redundant `to_s` on the value rendered by an output ERB tag.'
+  Enabled: true
+  Safe: true
+
+ERB/SpaceAfterOpeningTag:
+  Description: 'Ensures there is a space after the opening ERB tag.'
+  Enabled: true
+  Safe: true
+
+ERB/SpaceBeforeClosingTag:
+  Description: 'Ensures there is a space before the closing ERB tag.'
+  Enabled: true
+  Safe: true
+
+ERB/StrayClosingTag:
+  Description: 'Warns about ERB closing tags that do not have a corresponding opening tag.'
+  Enabled: true
+  Severity: warning
+
+ERB/TagAlignment:
+  Description: 'Ensures multi-line ERB closing tags are aligned with their opening tags.'
+  Enabled: true
+  Safe: true
+
+ERB/TagIndentation:
+  Description: 'Indents a tag one level from the tag on the previous line.'
+  Enabled: true
+  Safe: true
+  Include:
+    - '**/*.html.erb'
+    - '**/html/*.erb'
+
+ERB/TrailingEmptyLines:
+  Description: 'Looks for trailing blank lines and a final newline in an ERB template.'
+  Enabled: true
+  EnforcedStyle: final_newline
+  SupportedStyles:
+    - final_newline
+    - final_blank_line
+  Safe: true
+  Include:
+    - '**/*.html.erb'
+    - '**/html/*.erb'
+
+ERB/VoidElementWithClosingTag:
+  Description: 'Ensures void HTML elements are not closed with a separate closing tag.'
+  Enabled: true
+  Severity: warning
+
+# Indentation follows the containing ERB tag, not the file as a whole. See ERB/Indentation.
 Layout/InitialIndentation:
   Exclude:
     - '**/*.erb'
 
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - '**/*.erb'
-
-Layout/EndAlignment:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstArgumentIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstArrayElementIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstArrayElementLineBreak:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstHashElementIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstHashElementLineBreak:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstMethodArgumentLineBreak:
-  Exclude:
-    - '**/*.erb'
-
-Layout/FirstParameterIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/HashAlignment:
-  Exclude:
-    - '**/*.erb'
-
-Layout/IndentationConsistency:
-  Exclude:
-    - '**/*.erb'
-
-Layout/IndentationWidth:
-  Exclude:
-    - '**/*.erb'
-
-Layout/LeadingEmptyLine:
-  Exclude:
-    - '**/*.erb'
-
+# Non-Ruby content gives false positives for this cop; See ERB/LeadingEmptyLines.
 Layout/LeadingEmptyLines:
   Exclude:
     - '**/*.erb'
 
-Layout/LineEndStringConcatenationIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/LineLength:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineArrayBraceLayout:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineAssignmentLayout:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineHashBraceLayout:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineMethodCallBraceLayout:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineMethodCallIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineMethodDefinitionBraceLayout:
-  Exclude:
-    - '**/*.erb'
-
-Layout/MultilineOperationIndentation:
-  Exclude:
-    - '**/*.erb'
-
-Layout/ParameterAlignment:
-  Exclude:
-    - '**/*.erb'
-
+# Non-Ruby content gives false positives for this cop; See ERB/TrailingEmptyLines.
 Layout/TrailingEmptyLines:
   Exclude:
     - '**/*.erb'
 
-Layout/TrailingWhitespace:
-  Exclude:
-    - '**/*.erb'
-
+# Non-Ruby content gives false positives for this cop.
 Lint/EmptyFile:
   Exclude:
     - '**/*.erb'
 
-Lint/OutOfRangeRegexpRef:
-  Exclude:
-    - '**/*.erb'
-
-Lint/Syntax:
-  Exclude:
-    - '**/*.erb'
-
-Lint/UselessAssignment:
-  Exclude:
-    - '**/*.erb'
-
-Lint/Void:
-  Exclude:
-    - '**/*.erb'
-
-Metrics/BlockLength:
-  Exclude:
-    - '**/*.erb'
-
-Metrics/BlockNesting:
-  Exclude:
-    - '**/*.erb'
-
-Naming/FileName:
-  Exclude:
-    - '**/*.erb'
-
+# ERB doesn't support magic comments.
 Style/FrozenStringLiteralComment:
-  Exclude:
-    - '**/*.erb'
-
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - '**/*.erb'
-
-Style/IfUnlessModifier:
-  Exclude:
-    - '**/*.erb'
-
-Style/MultilineTernaryOperator:
-  Exclude:
-    - '**/*.erb'
-
-Style/NestedTernaryOperator:
-  Exclude:
-    - '**/*.erb'
-
-Style/Next:
-  Exclude:
-    - '**/*.erb'
-
-Style/ParallelAssignment:
-  Exclude:
-    - '**/*.erb'
-
-Style/RescueModifier:
-  Exclude:
-    - '**/*.erb'
-
-Style/Semicolon:
-  Exclude:
-    - '**/*.erb'
-
-Style/TrailingCommaInArguments:
-  Exclude:
-    - '**/*.erb'
-
-Style/TrailingCommaInArrayLiteral:
-  Exclude:
-    - '**/*.erb'
-
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - '**/*.erb'
-
-Style/WhileUntilDo:
-  Exclude:
-    - '**/*.erb'
-
-Style/WhileUntilModifier:
   Exclude:
     - '**/*.erb'
